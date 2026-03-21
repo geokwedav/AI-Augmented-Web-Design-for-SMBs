@@ -1,814 +1,373 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI-Augmented Web Design — Consulting for SMBs</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Augmented Web Design — Consulting Pitch Deck</title>
 <style>
-  /* ── RESET & BASE ───────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: #0b0c14;
-    color: #e8e6f0;
-    overflow-x: hidden;
-    line-height: 1.7;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #f0eff8; padding: 2rem 1rem; }
+  h1, h2, h3, p, div { color: inherit; }
 
-  /* ── CSS VARIABLES ──────────────────────────────────── */
-  :root {
-    --orange: #ff6b2b;
-    --orange-light: #ff8f5e;
-    --orange-pale: #ff6b2b18;
-    --blue: #2563ff;
-    --blue-light: #5b8aff;
-    --blue-pale: #2563ff18;
-    --navy: #0b0c14;
-    --navy2: #111322;
-    --navy3: #181a2e;
-    --card: #13152280;
-    --border: rgba(255,255,255,0.08);
-    --text: #e8e6f0;
-    --muted: rgba(232,230,240,0.55);
-    --grad-main: linear-gradient(135deg, #ff6b2b 0%, #2563ff 100%);
-    --grad-warm: linear-gradient(135deg, #ff6b2b 0%, #ff3d6b 100%);
-    --grad-cool: linear-gradient(135deg, #2563ff 0%, #06b6d4 100%);
-  }
-
-  /* ── TYPOGRAPHY ─────────────────────────────────────── */
-  h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.1; }
-  h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; }
-  h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; }
-  h3 { font-size: 1.15rem; font-weight: 600; }
-  p  { font-size: 1.05rem; color: var(--muted); }
-
-  /* ── LAYOUT ─────────────────────────────────────────── */
-  .container { max-width: 1160px; margin: 0 auto; padding: 0 2rem; }
-  section { padding: 7rem 0; position: relative; }
-
-  /* ── NOISE OVERLAY ───────────────────────────────────── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0; z-index: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none;
-    opacity: 0.4;
-  }
-
-  /* ── AMBIENT BLOBS ───────────────────────────────────── */
-  .blob {
-    position: absolute; border-radius: 50%;
-    filter: blur(90px); pointer-events: none; z-index: 0;
-  }
-  .blob-orange { background: radial-gradient(circle, #ff6b2b55, transparent 70%); }
-  .blob-blue   { background: radial-gradient(circle, #2563ff44, transparent 70%); }
-
-  /* ── NAV ────────────────────────────────────────────── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 1.1rem 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(11,12,20,0.75);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800; font-size: 1.1rem;
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: 0.9rem; font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta {
-    background: var(--grad-main);
-    color: #fff; border: none; padding: 0.55rem 1.4rem;
-    border-radius: 100px; font-family: 'DM Sans', sans-serif;
-    font-weight: 500; font-size: 0.9rem; cursor: pointer;
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.2s;
-    white-space: nowrap;
-  }
-  .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
-
-  /* ── HERO ───────────────────────────────────────────── */
-  #hero {
-    min-height: 100vh;
-    display: flex; align-items: center;
-    padding-top: 5rem;
+  .deck {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 16px;
     overflow: hidden;
-  }
-  .hero-inner {
-    position: relative; z-index: 1;
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 4rem; align-items: center;
-  }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: var(--orange-pale);
-    border: 1px solid rgba(255,107,43,0.3);
-    border-radius: 100px; padding: 0.4rem 1rem;
-    font-size: 0.82rem; font-weight: 500;
-    color: var(--orange-light); margin-bottom: 1.5rem;
-  }
-  .hero-badge::before {
-    content: ''; width: 7px; height: 7px;
-    border-radius: 50%; background: var(--orange);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-  .hero-title { margin-bottom: 1.5rem; }
-  .hero-title em {
-    font-style: normal;
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-subtitle { font-size: 1.15rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 480px; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-  .btn-primary {
-    background: var(--grad-main);
-    color: #fff; border: none; padding: 0.9rem 2rem;
-    border-radius: 100px; font-family: 'DM Sans', sans-serif;
-    font-weight: 500; font-size: 1rem; cursor: pointer;
-    text-decoration: none; display: inline-block;
-    transition: opacity 0.2s, transform 0.2s;
-    box-shadow: 0 8px 30px rgba(255,107,43,0.25);
-  }
-  .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
-  .btn-ghost {
-    color: var(--text); border: 1px solid var(--border);
-    padding: 0.9rem 2rem; border-radius: 100px;
-    font-family: 'DM Sans', sans-serif; font-weight: 500;
-    font-size: 1rem; cursor: pointer; text-decoration: none;
-    display: inline-block; background: transparent;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); }
-
-  /* Hero right — floating card stack */
-  .hero-visual {
-    position: relative; height: 420px;
-  }
-  .stat-card {
-    position: absolute;
-    background: var(--card);
-    border: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    border-radius: 1.25rem;
-    padding: 1.5rem 1.75rem;
-    animation: float 6s ease-in-out infinite;
-  }
-  .stat-card:nth-child(1) { top: 0; left: 0; width: 220px; animation-delay: 0s; }
-  .stat-card:nth-child(2) { top: 110px; right: 0; width: 200px; animation-delay: 1.5s; }
-  .stat-card:nth-child(3) { bottom: 30px; left: 30px; width: 240px; animation-delay: 3s; }
-  @keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-  }
-  .stat-value {
-    font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 800;
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; line-height: 1.1; margin-bottom: 0.3rem;
-  }
-  .stat-label { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
-
-  /* ── GRADIENT DIVIDER ───────────────────────────────── */
-  .grad-line {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--orange), var(--blue), transparent);
-    opacity: 0.4;
+    border: 0.5px solid #d8d5f0;
+    box-shadow: 0 8px 40px rgba(83,74,183,0.10);
   }
 
-  /* ── PROBLEM ────────────────────────────────────────── */
-  #problem { background: var(--navy2); }
-  .section-tag {
-    display: inline-block;
-    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase;
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 1rem;
-  }
-  .problem-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 4rem; align-items: center; margin-top: 3rem;
-  }
-  .problem-stats { display: flex; flex-direction: column; gap: 1.25rem; }
-  .pstat {
-    display: flex; align-items: center; gap: 1.25rem;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 1rem; padding: 1.25rem 1.5rem;
-    backdrop-filter: blur(8px);
-  }
-  .pstat-num {
-    font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800;
-    min-width: 110px;
-  }
-  .pstat-num.orange { color: var(--orange); }
-  .pstat-num.blue   { color: var(--blue-light); }
-  .pstat-num.mixed  {
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .pstat-desc { font-size: 0.92rem; color: var(--muted); line-height: 1.5; }
-
-  /* ── SOLUTION ───────────────────────────────────────── */
-  #solution { background: var(--navy); }
-  .solution-cards {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem; margin-top: 3.5rem;
-  }
-  .sol-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 1.25rem;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-    position: relative; overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s;
-  }
-  .sol-card:hover { transform: translateY(-6px); border-color: rgba(255,107,43,0.3); }
-  .sol-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: var(--grad-main);
-  }
-  .sol-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; margin-bottom: 1.2rem;
-  }
-  .sol-icon.orange { background: var(--orange-pale); border: 1px solid rgba(255,107,43,0.25); }
-  .sol-icon.blue   { background: var(--blue-pale);   border: 1px solid rgba(37,99,255,0.25); }
-  .sol-icon.mixed  { background: linear-gradient(135deg,var(--orange-pale),var(--blue-pale)); border: 1px solid var(--border); }
-  .sol-card h3 { color: var(--text); margin-bottom: 0.75rem; }
-  .sol-card p  { font-size: 0.93rem; }
-
-  /* ── WHO WE SERVE ───────────────────────────────────── */
-  #serve { background: var(--navy3); }
-  .serve-layout {
-    display: grid; grid-template-columns: 1.1fr 1fr;
-    gap: 4rem; align-items: start; margin-top: 3rem;
-  }
-  .pill-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 1.5rem 0 2rem; }
-  .pill {
-    padding: 0.5rem 1.1rem; border-radius: 100px;
-    font-size: 0.88rem; font-weight: 500;
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.03);
-    color: var(--muted); transition: all 0.2s;
-  }
-  .pill:hover { border-color: var(--orange); color: var(--orange-light); background: var(--orange-pale); }
-  .client-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 1.25rem; overflow: hidden;
-    backdrop-filter: blur(10px);
-  }
-  .client-card-header {
-    background: var(--grad-main);
-    padding: 1rem 1.5rem;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700; font-size: 0.95rem; color: #fff;
-  }
-  .client-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 0.9rem 1.5rem;
-    border-top: 1px solid var(--border);
-    font-size: 0.9rem;
-  }
-  .client-row:first-of-type { border-top: none; }
-  .client-row span:first-child { color: var(--muted); }
-  .client-row span:last-child  { color: var(--text); font-weight: 500; }
-
-  /* ── PRICING ────────────────────────────────────────── */
-  #pricing { background: var(--navy); }
-  .pricing-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem; margin-top: 3.5rem;
-    align-items: start;
-  }
-  .price-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 1.5rem;
-    padding: 2rem;
-    backdrop-filter: blur(10px);
+  .slide {
+    width: 100%;
+    padding: 2.75rem 3.5rem;
     position: relative;
-    transition: transform 0.3s;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
-  .price-card:hover { transform: translateY(-5px); }
+
+  .slide-dark  { background: #1a1f3a; color: #fff; }
+  .slide-white { background: #ffffff; color: #1a1f3a; border-top: 0.5px solid #e8e5f8; }
+  .slide-light { background: #f8f7ff; color: #1a1f3a; border-top: 0.5px solid #e8e5f8; }
+  .slide-mid   { background: #eeedfb; color: #1a1f3a; border-top: 0.5px solid #e0dcf8; }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    opacity: .52;
+    margin-bottom: .65rem;
+  }
+
+  h1 { font-size: 2.3rem; font-weight: 500; line-height: 1.18; margin-bottom: .8rem; }
+  h2 { font-size: 1.55rem; font-weight: 500; line-height: 1.25; margin-bottom: .5rem; }
+  h3 { font-size: 1rem; font-weight: 500; margin-bottom: .35rem; }
+
+  .sub { font-size: 1rem; opacity: .68; line-height: 1.65; max-width: 560px; }
+
+  /* Grids */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-top: 1rem; align-items: center; }
+  .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    border: 0.5px solid #ddd9f5;
+  }
+  .card-soft {
+    background: #f8f7ff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    border: 0.5px solid #ddd9f5;
+  }
+  .card h3, .card-soft h3 { color: #534ab7; }
+  .card p, .card-soft p { font-size: .85rem; opacity: .7; line-height: 1.55; margin-top: .3rem; }
+
+  /* Stats */
+  .stat { font-size: 2rem; font-weight: 500; color: #534ab7; margin-bottom: .2rem; }
+  .stat-label { font-size: .8rem; opacity: .6; }
+
+  /* Pricing */
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+  .price-card {
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 0.5px solid #ddd9f5;
+    background: #fff;
+  }
   .price-card.featured {
-    border-color: var(--orange);
-    background: linear-gradient(160deg, rgba(255,107,43,0.1), rgba(37,99,255,0.08));
-    transform: scale(1.03);
+    border: 2px solid #7f77dd;
+    background: #f8f7ff;
   }
-  .price-card.featured:hover { transform: scale(1.03) translateY(-5px); }
-  .badge-popular {
-    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-    background: var(--grad-main);
-    color: #fff; font-size: 0.73rem; font-weight: 600;
-    padding: 0.3rem 1rem; border-radius: 100px;
-    white-space: nowrap; letter-spacing: 0.05em;
+  .price-card .badge {
+    display: inline-block;
+    background: #eeedfe;
+    color: #534ab7;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: .75rem;
   }
-  .price-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--text); }
-  .price-amount {
-    font-family: 'Syne', sans-serif; font-size: 2.5rem; font-weight: 800;
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; line-height: 1; margin: 0.75rem 0 0.25rem;
-  }
-  .price-unit { font-size: 0.83rem; color: var(--muted); margin-bottom: 1rem; }
-  .price-desc { font-size: 0.88rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.5; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
-  .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-  .price-features li { font-size: 0.88rem; color: var(--muted); display: flex; gap: 0.6rem; align-items: flex-start; }
-  .price-features li::before {
-    content: '✓';
-    min-width: 18px; height: 18px;
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 700; font-size: 0.85rem; margin-top: 1px;
-  }
-  .price-cta {
-    display: block; text-align: center;
-    margin-top: 2rem; padding: 0.8rem;
-    border-radius: 100px; font-weight: 500; font-size: 0.93rem;
-    text-decoration: none; transition: all 0.2s;
-  }
-  .price-cta-ghost { border: 1px solid var(--border); color: var(--text); }
-  .price-cta-ghost:hover { border-color: var(--orange); color: var(--orange-light); }
-  .price-cta-solid { background: var(--grad-main); color: #fff; box-shadow: 0 6px 24px rgba(255,107,43,0.25); }
-  .price-cta-solid:hover { opacity: 0.88; transform: translateY(-1px); }
+  .price-card .name { font-size: .88rem; font-weight: 500; margin-bottom: .3rem; }
+  .price-card .amount { font-size: 1.8rem; font-weight: 500; color: #1a1f3a; margin: .5rem 0; }
+  .price-card .amount span { font-size: .9rem; font-weight: 400; opacity: .6; }
+  .price-card .desc { font-size: .8rem; opacity: .65; line-height: 1.5; margin-bottom: .5rem; }
+  .price-card ul { margin-top: .75rem; padding: 0; list-style: none; }
+  .price-card ul li { font-size: .82rem; padding: 5px 0; opacity: .75; border-top: 0.5px solid #f0eeff; }
+  .price-card ul li:first-child { border-top: none; }
 
-  /* ── PROCESS ────────────────────────────────────────── */
-  #process { background: var(--navy2); }
-  .process-steps {
-    display: grid; grid-template-columns: repeat(5, 1fr);
-    gap: 1rem; margin-top: 3.5rem; position: relative;
-  }
-  .process-steps::before {
-    content: '';
-    position: absolute; top: 30px; left: 10%; right: 10%; height: 1px;
-    background: linear-gradient(90deg, var(--orange), var(--blue));
-    opacity: 0.35; z-index: 0;
-  }
-  .step {
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center; position: relative; z-index: 1;
-  }
+  /* Process steps */
+  .step-row { display: flex; flex-direction: column; gap: .8rem; margin-top: 1.5rem; }
+  .step { display: flex; align-items: flex-start; gap: 1rem; }
   .step-num {
-    width: 60px; height: 60px; border-radius: 50%;
-    background: var(--grad-main);
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: #7f77dd;
+    color: #fff;
+    font-weight: 500;
+    font-size: .85rem;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.2rem;
-    color: #fff; margin-bottom: 1.2rem;
-    box-shadow: 0 6px 24px rgba(255,107,43,0.3);
+    flex-shrink: 0;
   }
-  .step h3 { font-size: 0.95rem; color: var(--text); margin-bottom: 0.5rem; }
-  .step p { font-size: 0.82rem; color: var(--muted); }
+  .step-body h3 { font-size: .92rem; font-weight: 500; color: #1a1f3a; }
+  .step-body p { font-size: .82rem; opacity: .65; margin-top: .15rem; line-height: 1.5; }
 
-  /* ── WHY US ─────────────────────────────────────────── */
-  #why { background: var(--navy3); }
-  .why-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem; margin-top: 3.5rem;
-  }
-  .why-card {
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 1.25rem; padding: 2rem;
-    backdrop-filter: blur(10px);
-    transition: transform 0.3s, border-color 0.3s;
-  }
-  .why-card:hover { transform: translateY(-5px); border-color: rgba(37,99,255,0.4); }
-  .why-number {
-    font-family: 'Syne', sans-serif; font-size: 3rem; font-weight: 800;
-    background: var(--grad-main); opacity: 0.18;
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; line-height: 1; margin-bottom: 0.75rem;
-  }
-  .why-card h3 { color: var(--text); margin-bottom: 0.75rem; font-size: 1.1rem; }
-  .why-tagline {
-    margin-top: 3rem; text-align: center;
-    font-family: 'Syne', sans-serif; font-size: 1.15rem; font-weight: 600;
-    color: var(--text);
-  }
-  .why-tagline span {
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+  /* Pills */
+  .pill {
+    display: inline-block;
+    background: #eeedfe;
+    color: #534ab7;
+    font-size: .78rem;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin: 3px 2px;
   }
 
-  /* ── CTA ─────────────────────────────────────────────── */
-  #cta {
-    background: var(--navy);
-    text-align: center; overflow: hidden;
-  }
-  .cta-glow {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
-    width: 600px; height: 300px;
-    background: radial-gradient(ellipse, rgba(255,107,43,0.15) 0%, rgba(37,99,255,0.1) 50%, transparent 70%);
-    pointer-events: none; z-index: 0;
-  }
-  .cta-inner { position: relative; z-index: 1; }
-  .cta-inner h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1.25rem; }
-  .cta-inner p { font-size: 1.1rem; max-width: 520px; margin: 0 auto 2.5rem; }
-  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .contact-row {
-    display: flex; gap: 2.5rem; justify-content: center; flex-wrap: wrap;
-    margin-top: 3rem; padding-top: 2.5rem;
-    border-top: 1px solid var(--border);
-  }
-  .contact-item { font-size: 0.88rem; color: var(--muted); }
-  .contact-item a { color: var(--blue-light); text-decoration: none; }
-  .contact-item a:hover { color: var(--orange-light); }
+  /* CTA */
+  .cta-big { font-size: 1.1rem; font-weight: 500; color: #afa9ec; margin-top: 1.25rem; }
 
-  /* ── FOOTER ─────────────────────────────────────────── */
-  footer {
-    background: var(--navy2);
-    border-top: 1px solid var(--border);
-    padding: 2rem; text-align: center;
-  }
-  footer p { font-size: 0.82rem; color: var(--muted); }
-  footer strong {
-    background: var(--grad-main);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; font-weight: 700;
+  /* Slide number */
+  .slide-num {
+    position: absolute;
+    bottom: 1.1rem;
+    right: 1.75rem;
+    font-size: .7rem;
+    opacity: .32;
+    font-weight: 500;
   }
 
-  /* ── ANIMATIONS ─────────────────────────────────────── */
-  .fade-up {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
+  /* Profile row */
+  .contact-row { margin-top: 1.75rem; display: flex; gap: 1.75rem; flex-wrap: wrap; }
+  .contact-row span { font-size: .82rem; color: rgba(255,255,255,.48); }
 
-  /* ── RESPONSIVE ─────────────────────────────────────── */
-  @media (max-width: 900px) {
-    .hero-inner, .problem-grid, .serve-layout { grid-template-columns: 1fr; }
-    .hero-visual { display: none; }
-    .solution-cards, .pricing-grid, .why-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: 1fr 1fr; }
-    .process-steps::before { display: none; }
-    .price-card.featured { transform: scale(1); }
-    nav .nav-links { display: none; }
+  /* Responsive */
+  @media (max-width: 680px) {
+    .slide { padding: 2rem 1.5rem; min-height: auto; }
+    h1 { font-size: 1.6rem; }
+    h2 { font-size: 1.2rem; }
+    .grid-3, .grid-2, .two-col, .price-grid { grid-template-columns: 1fr; }
+    .step-row { gap: 1rem; }
   }
 </style>
 </head>
 <body>
 
-<!-- ── NAV ─────────────────────────────────────────────── -->
-<nav>
-  <div class="nav-logo">YourConsulting.ai</div>
-  <ul class="nav-links">
-    <li><a href="#solution">Services</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#process">Process</a></li>
-    <li><a href="#why">About</a></li>
-  </ul>
-  <a href="#cta" class="nav-cta">Book a Free Call</a>
-</nav>
+<div class="deck">
 
-<!-- ── HERO ────────────────────────────────────────────── -->
-<section id="hero">
-  <!-- Blobs -->
-  <div class="blob blob-orange" style="width:600px;height:600px;top:-150px;left:-200px;opacity:0.5;"></div>
-  <div class="blob blob-blue"   style="width:500px;height:500px;bottom:-100px;right:-100px;opacity:0.5;"></div>
-
-  <div class="container">
-    <div class="hero-inner">
-      <div class="fade-up">
-        <div class="hero-badge">AI-Augmented Web Design for SMBs</div>
-        <h1 class="hero-title">
-          Your Website,<br>
-          <em>Redesigned</em><br>
-          in 2 Weeks.
-        </h1>
-        <p class="hero-subtitle">
-          Faster builds. Smarter strategy. Real results for small and mid-size businesses — without the agency price tag or timeline.
-        </p>
-        <div class="hero-actions">
-          <a href="#cta" class="btn-primary">Book a Free Discovery Call →</a>
-          <a href="#pricing" class="btn-ghost">View Pricing</a>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="stat-card">
-          <div class="stat-value">7 Days</div>
-          <div class="stat-label">Starter website delivered,<br>not months</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">3-in-1</div>
-          <div class="stat-label">Design + Business + AI<br>in one consultant</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">73%</div>
-          <div class="stat-label">SMBs say their website<br>doesn't reflect their brand</div>
-        </div>
-      </div>
-    </div>
+  <!-- Slide 1: Dark title -->
+  <div class="slide slide-dark">
+    <div class="tag" style="color:#afa9ec">Consulting services</div>
+    <h1 style="color:#fff">AI-Augmented<br><span style="color:#afa9ec">Web Design</span><br>for Growing Businesses</h1>
+    <p class="sub" style="color:rgba(255,255,255,.6)">Faster builds. Smarter strategy. Real results for small and mid-size businesses.</p>
+    <div class="slide-num" style="color:rgba(255,255,255,.3)">1 / 8</div>
   </div>
-</section>
 
-<div class="grad-line"></div>
-
-<!-- ── PROBLEM ─────────────────────────────────────────── -->
-<section id="problem">
-  <div class="blob blob-orange" style="width:400px;height:400px;top:-80px;right:5%;opacity:0.25;"></div>
-  <div class="container">
-    <div class="fade-up">
-      <div class="section-tag">The Problem</div>
-      <h2>SMBs are stuck between slow agencies<br>and cheap templates</h2>
-    </div>
-    <div class="problem-grid fade-up">
+  <!-- Slide 2: White — The Problem -->
+  <div class="slide slide-white">
+    <div class="tag">The problem</div>
+    <div class="two-col">
       <div>
-        <p style="font-size:1.05rem;margin-bottom:1.5rem;">
-          Traditional agencies are expensive and slow. DIY tools produce generic results. And now AI is changing everything — but most SMB owners don't know how to leverage it.
-        </p>
-        <p>
-          The gap between "good enough" and "actually converts" has never been wider. Your website is your #1 sales tool — it should work as hard as you do.
-        </p>
+        <h2>SMBs are stuck between slow agencies and cheap templates</h2>
+        <p class="sub" style="margin-top:.75rem">Traditional agencies are expensive and slow. DIY tools produce generic results. And AI is changing everything — but most SMB owners don't know how to leverage it.</p>
       </div>
-      <div class="problem-stats">
-        <div class="pstat">
-          <div class="pstat-num orange">6–12 wks</div>
-          <div class="pstat-desc">Average agency web project timeline, from brief to launch</div>
-        </div>
-        <div class="pstat">
-          <div class="pstat-num blue">$8–20K</div>
-          <div class="pstat-desc">Typical agency website cost for a small business</div>
-        </div>
-        <div class="pstat">
-          <div class="pstat-num mixed">73%</div>
-          <div class="pstat-desc">SMBs say their website doesn't reflect their brand or goals</div>
-        </div>
+      <div style="display:flex;flex-direction:column;gap:.75rem">
+        <div class="card"><div class="stat">6–12 wks</div><div class="stat-label">Average agency web project timeline</div></div>
+        <div class="card"><div class="stat">$8–20K</div><div class="stat-label">Typical agency website cost</div></div>
+        <div class="card"><div class="stat">73%</div><div class="stat-label">SMBs say their website doesn't reflect their brand</div></div>
       </div>
     </div>
+    <div class="slide-num">2 / 8</div>
   </div>
-</section>
 
-<div class="grad-line"></div>
-
-<!-- ── SOLUTION ────────────────────────────────────────── -->
-<section id="solution">
-  <div class="blob blob-blue" style="width:500px;height:500px;top:0;left:-150px;opacity:0.2;"></div>
-  <div class="container">
-    <div class="fade-up" style="text-align:center;max-width:680px;margin:0 auto;">
-      <div class="section-tag">The Solution</div>
-      <h2>We combine human design expertise with AI speed</h2>
-      <p style="margin-top:1rem;">The best of both worlds — creative strategy driven by business outcomes, powered by the latest generative AI tools.</p>
-    </div>
-    <div class="solution-cards">
-      <div class="sol-card fade-up">
-        <div class="sol-icon orange">⚡</div>
-        <h3>AI-Powered Speed</h3>
-        <p>Deliver polished websites in 1–2 weeks, not months. AI handles the heavy lifting so we focus on strategy and quality.</p>
+  <!-- Slide 3: White — The Solution -->
+  <div class="slide slide-white">
+    <div class="tag">The solution</div>
+    <h2>We combine human design expertise with AI speed</h2>
+    <div class="grid-3">
+      <div class="card-soft">
+        <h3>AI-powered speed</h3>
+        <p>Deliver polished websites in 1–2 weeks, not months. AI handles the heavy lifting so we focus on strategy.</p>
       </div>
-      <div class="sol-card fade-up">
-        <div class="sol-icon blue">📈</div>
-        <h3>Business-First Thinking</h3>
-        <p>Every design decision ties to your goals — leads, sales, brand trust. We speak business, not just pixels and layouts.</p>
+      <div class="card-soft">
+        <h3>Business-first thinking</h3>
+        <p>Every design decision ties to your goals — leads, sales, trust. We speak business, not just pixels.</p>
       </div>
-      <div class="sol-card fade-up">
-        <div class="sol-icon mixed">🤖</div>
-        <h3>Ongoing AI Advantage</h3>
-        <p>We teach you to use AI tools to update and grow your site independently — no long-term agency dependency.</p>
+      <div class="card-soft">
+        <h3>Ongoing AI advantage</h3>
+        <p>We teach you to use AI tools to update and grow your site independently — no agency dependency.</p>
       </div>
     </div>
+    <div class="slide-num">3 / 8</div>
   </div>
-</section>
 
-<div class="grad-line"></div>
-
-<!-- ── WHO WE SERVE ─────────────────────────────────────── -->
-<section id="serve">
-  <div class="blob blob-orange" style="width:450px;height:450px;bottom:-100px;left:-100px;opacity:0.2;"></div>
-  <div class="container">
-    <div class="serve-layout">
-      <div class="fade-up">
-        <div class="section-tag">Who We Serve</div>
-        <h2>Built for businesses ready to grow</h2>
-        <p style="margin-top:1rem;">Whether you're a local service business, an e-commerce brand, a professional services firm, or a startup — if your website isn't doing its job, we can fix that. Fast.</p>
-        <div class="pill-grid">
+  <!-- Slide 4: Mid purple — Who We Serve -->
+  <div class="slide slide-mid">
+    <div class="tag">Who we serve</div>
+    <h2>Built for small and mid-size businesses that are ready to grow</h2>
+    <div class="grid-2">
+      <div>
+        <p style="font-size:.9rem;opacity:.7;line-height:1.7">Whether you're a local service business, an e-commerce brand, a professional services firm, or a startup — if your website isn't doing its job, we can fix that. Fast.</p>
+        <div style="margin-top:1rem">
           <span class="pill">Local service businesses</span>
           <span class="pill">E-commerce brands</span>
           <span class="pill">Professional services</span>
-          <span class="pill">Startups & coaches</span>
-          <span class="pill">Restaurants & hospitality</span>
-          <span class="pill">Consultants & creatives</span>
+          <span class="pill">Startups</span>
+          <span class="pill">Consultants &amp; coaches</span>
+          <span class="pill">Restaurants &amp; hospitality</span>
         </div>
       </div>
-      <div class="client-card fade-up">
-        <div class="client-card-header">Ideal Client Profile</div>
-        <div class="client-row"><span>Team size</span><span>5–50 employees</span></div>
-        <div class="client-row"><span>Current website</span><span>Outdated or DIY</span></div>
-        <div class="client-row"><span>Budget range</span><span>$2,500–$10,000</span></div>
-        <div class="client-row"><span>Priority</span><span>Results, not jargon</span></div>
-        <div class="client-row"><span>Timeline</span><span>Wants it done fast</span></div>
+      <div class="card">
+        <h3 style="margin-bottom:.75rem">Ideal client profile</h3>
+        <div style="display:flex;flex-direction:column">
+          <div style="font-size:.84rem;opacity:.75;padding:7px 0;border-bottom:0.5px solid #eee">5–50 employees</div>
+          <div style="font-size:.84rem;opacity:.75;padding:7px 0;border-bottom:0.5px solid #eee">Outdated or DIY website</div>
+          <div style="font-size:.84rem;opacity:.75;padding:7px 0;border-bottom:0.5px solid #eee">Budget: $2K–$10K</div>
+          <div style="font-size:.84rem;opacity:.75;padding:7px 0">Wants results, not jargon</div>
+        </div>
       </div>
     </div>
+    <div class="slide-num">4 / 8</div>
   </div>
-</section>
 
-<div class="grad-line"></div>
-
-<!-- ── PRICING ──────────────────────────────────────────── -->
-<section id="pricing">
-  <div class="blob blob-blue" style="width:400px;height:400px;top:50%;right:-100px;opacity:0.2;"></div>
-  <div class="container">
-    <div class="fade-up" style="text-align:center;max-width:600px;margin:0 auto;">
-      <div class="section-tag">Services & Pricing</div>
-      <h2>Three clear ways to work together</h2>
-      <p style="margin-top:1rem;">No hidden fees, no scope creep surprises. Transparent pricing built for small business budgets.</p>
-    </div>
-    <div class="pricing-grid">
-
-      <div class="price-card fade-up">
-        <div class="price-name">Starter Sprint</div>
-        <div class="price-amount">$2,500</div>
-        <div class="price-unit">per project</div>
-        <div class="price-desc">For solopreneurs &amp; micro-businesses needing a professional online presence fast.</div>
-        <ul class="price-features">
+  <!-- Slide 5: White — Pricing -->
+  <div class="slide slide-white">
+    <div class="tag">Services &amp; pricing</div>
+    <h2>Three clear ways to work together</h2>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="name">Starter Sprint</div>
+        <div class="amount">$2,500 <span>/ project</span></div>
+        <p class="desc">For solopreneurs and micro-businesses needing a professional presence fast.</p>
+        <ul>
           <li>5-page AI-built website</li>
-          <li>Brand &amp; copy alignment</li>
-          <li>Mobile-optimised design</li>
+          <li>Brand + copy alignment</li>
+          <li>Mobile-optimised</li>
           <li>Delivered in 7 days</li>
           <li>1 round of revisions</li>
         </ul>
-        <a href="#cta" class="price-cta price-cta-ghost">Get Started</a>
       </div>
-
-      <div class="price-card featured fade-up">
-        <div class="badge-popular">MOST POPULAR</div>
-        <div class="price-name">Growth Package</div>
-        <div class="price-amount">$5,500</div>
-        <div class="price-unit">per project</div>
-        <div class="price-desc">For established SMBs ready to invest in a website that actually converts visitors to customers.</div>
-        <ul class="price-features">
+      <div class="price-card featured">
+        <div class="badge">Most popular</div>
+        <div class="name">Growth Package</div>
+        <div class="amount">$5,500 <span>/ project</span></div>
+        <p class="desc">For established SMBs ready to invest in a site that actually converts.</p>
+        <ul>
           <li>10-page website</li>
           <li>SEO foundation setup</li>
           <li>AI content system</li>
-          <li>CRM &amp; lead capture integration</li>
+          <li>CRM / lead capture integration</li>
           <li>Delivered in 14 days</li>
           <li>2 rounds of revisions</li>
         </ul>
-        <a href="#cta" class="price-cta price-cta-solid">Get Started</a>
       </div>
-
-      <div class="price-card fade-up">
-        <div class="price-name">AI Strategy Retainer</div>
-        <div class="price-amount">$1,200</div>
-        <div class="price-unit">per month</div>
-        <div class="price-desc">Ongoing AI + web strategy for businesses that want to stay ahead of the competition.</div>
-        <ul class="price-features">
+      <div class="price-card">
+        <div class="name">AI Strategy Retainer</div>
+        <div class="amount">$1,200 <span>/ month</span></div>
+        <p class="desc">Ongoing AI + web strategy for businesses that want to stay ahead.</p>
+        <ul>
           <li>Monthly site updates</li>
           <li>AI content pipeline</li>
           <li>Analytics review</li>
-          <li>Team AI training (1hr/mo)</li>
+          <li>Team AI training (1 hr/mo)</li>
           <li>Priority support</li>
         </ul>
-        <a href="#cta" class="price-cta price-cta-ghost">Get Started</a>
       </div>
-
     </div>
+    <div class="slide-num">5 / 8</div>
   </div>
-</section>
 
-<div class="grad-line"></div>
-
-<!-- ── PROCESS ──────────────────────────────────────────── -->
-<section id="process">
-  <div class="container">
-    <div class="fade-up" style="text-align:center;max-width:620px;margin:0 auto;">
-      <div class="section-tag">Our Process</div>
-      <h2>From brief to live in 5 clear steps</h2>
-      <p style="margin-top:1rem;">No long intake forms or confusing project portals. Just a clear, fast workflow from first call to launch day.</p>
-    </div>
-    <div class="process-steps">
-      <div class="step fade-up">
+  <!-- Slide 6: White — Process -->
+  <div class="slide slide-white">
+    <div class="tag">Our process</div>
+    <h2>From brief to live in 5 clear steps</h2>
+    <div class="step-row">
+      <div class="step">
         <div class="step-num">1</div>
-        <h3>Discovery Call</h3>
-        <p>60-min session to learn your goals, audience, and what's not working with your current web presence.</p>
+        <div class="step-body">
+          <h3>Discovery call (60 min)</h3>
+          <p>We learn your business goals, audience, and what's not working with your current web presence.</p>
+        </div>
       </div>
-      <div class="step fade-up">
+      <div class="step">
         <div class="step-num">2</div>
-        <h3>AI Design Brief</h3>
-        <p>We generate initial wireframes, copy drafts, and visual concepts using AI — delivered within 24 hours.</p>
+        <div class="step-body">
+          <h3>AI-powered design brief</h3>
+          <p>We use generative AI to produce initial wireframes, copy drafts, and visual concepts in 24 hours.</p>
+        </div>
       </div>
-      <div class="step fade-up">
+      <div class="step">
         <div class="step-num">3</div>
-        <h3>Human Refinement</h3>
-        <p>Our designer elevates the AI output — adding brand voice, strategic polish, and business context.</p>
+        <div class="step-body">
+          <h3>Human refinement</h3>
+          <p>Our designer reviews, edits, and elevates the AI output — adding brand voice, polish, and strategy.</p>
+        </div>
       </div>
-      <div class="step fade-up">
+      <div class="step">
         <div class="step-num">4</div>
-        <h3>Review & Revise</h3>
-        <p>You see the full site and provide feedback. We iterate quickly using our AI-powered workflow.</p>
+        <div class="step-body">
+          <h3>Review &amp; revisions</h3>
+          <p>You see the full site and provide feedback. We iterate quickly using our AI workflow.</p>
+        </div>
       </div>
-      <div class="step fade-up">
+      <div class="step">
         <div class="step-num">5</div>
-        <h3>Launch & Handover</h3>
-        <p>We go live and hand you the keys — with a training session so you can manage it confidently.</p>
+        <div class="step-body">
+          <h3>Launch &amp; handover</h3>
+          <p>We go live and hand you the keys — with a training session so you can manage it confidently.</p>
+        </div>
       </div>
     </div>
+    <div class="slide-num">6 / 8</div>
   </div>
-</section>
 
-<div class="grad-line"></div>
-
-<!-- ── WHY US ────────────────────────────────────────────── -->
-<section id="why">
-  <div class="blob blob-orange" style="width:400px;height:400px;top:0;right:0;opacity:0.18;"></div>
-  <div class="container">
-    <div class="fade-up" style="text-align:center;max-width:620px;margin:0 auto;">
-      <div class="section-tag">Why Us</div>
-      <h2>The rare combination clients can't find elsewhere</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card fade-up">
-        <div class="why-number">01</div>
-        <h3>Design Credentials</h3>
-        <p>Years of web design experience across industries. Deep understanding of layout, UX, and brand identity that goes far beyond templates.</p>
+  <!-- Slide 7: Light purple — Why Us -->
+  <div class="slide slide-light">
+    <div class="tag">Why us</div>
+    <h2>The rare combination clients can't find elsewhere</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Design credentials</h3>
+        <p>Years of web design experience across industries. We understand layout, UX, and brand at a deep level.</p>
       </div>
-      <div class="why-card fade-up">
-        <div class="why-number">02</div>
-        <h3>Business Fluency</h3>
-        <p>We speak ROI, not just pixels. Every design decision connects back to your revenue and growth goals — not just aesthetic preference.</p>
+      <div class="card">
+        <h3>Business fluency</h3>
+        <p>We speak ROI, not pixels. Every design decision connects back to your revenue and growth goals.</p>
       </div>
-      <div class="why-card fade-up">
-        <div class="why-number">03</div>
+      <div class="card">
         <h3>Certified in Gen AI</h3>
-        <p>Formally trained in generative AI for work and research productivity. We stay at the frontier of what's possible so you don't have to.</p>
+        <p>Formally trained in generative AI for work and research — not just dabbling. We stay at the frontier.</p>
       </div>
     </div>
-    <p class="why-tagline fade-up">
-      Most agencies offer one or two of these.<br>
-      <span>We bring all three.</span>
-    </p>
+    <p style="margin-top:1.25rem;font-size:.85rem;opacity:.6;max-width:540px">Most agencies offer one or two of these. We bring all three — packaged into a service that's faster, sharper, and better value than traditional alternatives.</p>
+    <div class="slide-num">7 / 8</div>
   </div>
-</section>
 
-<div class="grad-line"></div>
-
-<!-- ── CTA ──────────────────────────────────────────────── -->
-<section id="cta">
-  <div class="cta-glow"></div>
-  <div class="blob blob-orange" style="width:500px;height:300px;top:0;left:0;opacity:0.15;"></div>
-  <div class="blob blob-blue"   style="width:500px;height:300px;bottom:0;right:0;opacity:0.15;"></div>
-  <div class="container">
-    <div class="cta-inner fade-up">
-      <div class="section-tag">Let's Talk</div>
-      <h2>Ready to build a website<br>that works as hard as you do?</h2>
-      <p>Book a free 30-minute discovery call. No commitment, no jargon — just an honest conversation about what your business needs online.</p>
-      <div class="cta-actions">
-        <a href="mailto:yourname@email.com" class="btn-primary">Book a Free Discovery Call →</a>
-        <a href="#pricing" class="btn-ghost">View Pricing First</a>
-      </div>
-      <div class="contact-row">
-        <div class="contact-item">✉️ <a href="mailto:yourname@email.com">yourname@email.com</a></div>
-        <div class="contact-item">🌐 <a href="https://yourconsulting.com">yourconsulting.com</a></div>
-        <div class="contact-item">💼 <a href="https://linkedin.com/in/yourname">linkedin.com/in/yourname</a></div>
-      </div>
+  <!-- Slide 8: Dark CTA -->
+  <div class="slide slide-dark">
+    <div class="tag" style="color:#afa9ec">Next steps</div>
+    <h2 style="color:#fff">Ready to build a website<br>that works as hard as you do?</h2>
+    <p class="sub" style="color:rgba(255,255,255,.6);margin-top:.75rem">Book a free 30-minute discovery call. No commitment, no jargon — just an honest conversation about what your business needs online.</p>
+    <div class="cta-big">Book a free discovery call →</div>
+    <div class="contact-row">
+      <span>yourname@email.com</span>
+      <span>yourconsulting.com</span>
+      <span>linkedin.com/in/yourname</span>
     </div>
+    <div class="slide-num" style="color:rgba(255,255,255,.3)">8 / 8</div>
   </div>
-</section>
 
-<!-- ── FOOTER ───────────────────────────────────────────── -->
-<footer>
-  <p>© 2026 <strong>YourConsulting.ai</strong> — AI-Augmented Web Design for Growing Businesses. All rights reserved.</p>
-</footer>
-
-<!-- ── SCROLL ANIMATION ─────────────────────────────────── -->
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
+</div>
 
 </body>
 </html>
