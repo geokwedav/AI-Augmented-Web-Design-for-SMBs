@@ -4,221 +4,671 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI-Augmented Web Design — Consulting Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; background: #f0eff8; padding: 2rem 1rem; }
-  h1, h2, h3, p, div { color: inherit; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .deck {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 0.5px solid #d8d5f0;
-    box-shadow: 0 8px 40px rgba(83,74,183,0.10);
-  }
+:root {
+  --navy:       #00225f;
+  --navy-dark:  #001540;
+  --navy-mid:   #003082;
+  --blue-light: #e8eef8;
+  --blue-pale:  #f4f6fb;
+  --orange:     #ff6b35;
+  --orange-hov: #e85820;
+  --white:      #ffffff;
+  --gray-lt:    #e2e8f0;
+  --gray-text:  #4a5568;
+  --gray-mid:   #718096;
+  --text:       #1a202c;
+  --green:      #22c55e;
+}
 
-  .slide {
-    width: 100%;
-    padding: 2.75rem 3.5rem;
-    position: relative;
-    min-height: 340px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #dce3f0;
+  padding: 2rem 1rem;
+  color: var(--text);
+}
 
-  .slide-dark  { background: #1a1f3a; color: #fff; }
-  .slide-white { background: #ffffff; color: #1a1f3a; border-top: 0.5px solid #e8e5f8; }
-  .slide-light { background: #f8f7ff; color: #1a1f3a; border-top: 0.5px solid #e8e5f8; }
-  .slide-mid   { background: #eeedfb; color: #1a1f3a; border-top: 0.5px solid #e0dcf8; }
+/* ── Wrapper ── */
+.deck {
+  max-width: 980px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 20px 80px rgba(0,34,95,0.25);
+}
 
-  .tag {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: .09em;
-    text-transform: uppercase;
-    opacity: .52;
-    margin-bottom: .65rem;
-  }
+/* ══════════════════════════════
+   NAV BAR
+══════════════════════════════ */
+.navbar {
+  background: var(--navy-dark);
+  padding: 0 3.5rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  z-index: 10;
+}
+.navbar-logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.02em;
+}
+.navbar-logo span { color: var(--orange); }
+.navbar-nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.navbar-nav a {
+  font-size: .82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.65);
+  text-decoration: none;
+}
+.navbar-nav a:hover { color: #fff; }
+.navbar-cta {
+  background: var(--orange);
+  color: #fff;
+  font-size: .82rem;
+  font-weight: 700;
+  padding: 9px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  letter-spacing: .01em;
+  margin-left: 1rem;
+}
 
-  h1 { font-size: 2.3rem; font-weight: 500; line-height: 1.18; margin-bottom: .8rem; }
-  h2 { font-size: 1.55rem; font-weight: 500; line-height: 1.25; margin-bottom: .5rem; }
-  h3 { font-size: 1rem; font-weight: 500; margin-bottom: .35rem; }
+/* ══════════════════════════════
+   HERO — full-width image banner
+══════════════════════════════ */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
 
-  .sub { font-size: 1rem; opacity: .68; line-height: 1.65; max-width: 560px; }
+/* the photo */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
 
-  /* Grids */
-  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
-  .grid-2 { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; margin-top: 1rem; align-items: center; }
-  .two-col { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center; }
+/* left-to-right dark gradient so text is always legible */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(0, 21, 64, 0.93) 0%,
+    rgba(0, 21, 64, 0.82) 42%,
+    rgba(0, 21, 64, 0.45) 70%,
+    rgba(0, 21, 64, 0.10) 100%
+  );
+}
 
-  /* Cards */
-  .card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    border: 0.5px solid #ddd9f5;
-  }
-  .card-soft {
-    background: #f8f7ff;
-    border-radius: 12px;
-    padding: 1.25rem 1.5rem;
-    border: 0.5px solid #ddd9f5;
-  }
-  .card h3, .card-soft h3 { color: #534ab7; }
-  .card p, .card-soft p { font-size: .85rem; opacity: .7; line-height: 1.55; margin-top: .3rem; }
+/* orange top accent stripe */
+.hero-stripe {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--orange);
+  z-index: 3;
+}
 
-  /* Stats */
-  .stat { font-size: 2rem; font-weight: 500; color: #534ab7; margin-bottom: .2rem; }
-  .stat-label { font-size: .8rem; opacity: .6; }
+/* content sits above overlays */
+.hero-content {
+  position: relative;
+  z-index: 4;
+  padding: 4rem 3.5rem 3.5rem;
+  max-width: 600px;
+}
 
-  /* Pricing */
-  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
-  .price-card {
-    border-radius: 12px;
-    padding: 1.5rem;
-    border: 0.5px solid #ddd9f5;
-    background: #fff;
-  }
-  .price-card.featured {
-    border: 2px solid #7f77dd;
-    background: #f8f7ff;
-  }
-  .price-card .badge {
-    display: inline-block;
-    background: #eeedfe;
-    color: #534ab7;
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 20px;
-    margin-bottom: .75rem;
-  }
-  .price-card .name { font-size: .88rem; font-weight: 500; margin-bottom: .3rem; }
-  .price-card .amount { font-size: 1.8rem; font-weight: 500; color: #1a1f3a; margin: .5rem 0; }
-  .price-card .amount span { font-size: .9rem; font-weight: 400; opacity: .6; }
-  .price-card .desc { font-size: .8rem; opacity: .65; line-height: 1.5; margin-bottom: .5rem; }
-  .price-card ul { margin-top: .75rem; padding: 0; list-style: none; }
-  .price-card ul li { font-size: .82rem; padding: 5px 0; opacity: .75; border-top: 0.5px solid #f0eeff; }
-  .price-card ul li:first-child { border-top: none; }
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: .8rem;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 2px;
+  background: var(--orange);
+  border-radius: 2px;
+}
 
-  /* Process steps */
-  .step-row { display: flex; flex-direction: column; gap: .8rem; margin-top: 1.5rem; }
-  .step { display: flex; align-items: flex-start; gap: 1rem; }
-  .step-num {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: #7f77dd;
-    color: #fff;
-    font-weight: 500;
-    font-size: .85rem;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .step-body h3 { font-size: .92rem; font-weight: 500; color: #1a1f3a; }
-  .step-body p { font-size: .82rem; opacity: .65; margin-top: .15rem; line-height: 1.5; }
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.08;
+  color: #fff;
+  letter-spacing: -.025em;
+  margin-bottom: 1.1rem;
+}
+.hero h1 span { color: var(--orange); }
 
-  /* Pills */
-  .pill {
-    display: inline-block;
-    background: #eeedfe;
-    color: #534ab7;
-    font-size: .78rem;
-    font-weight: 500;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin: 3px 2px;
-  }
+.hero-sub {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,.78);
+  max-width: 480px;
+  margin-bottom: 0;
+}
 
-  /* CTA */
-  .cta-big { font-size: 1.1rem; font-weight: 500; color: #afa9ec; margin-top: 1.25rem; }
+.hero-btns {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.85rem;
+  flex-wrap: wrap;
+}
+.btn-orange {
+  display: inline-block;
+  padding: .9rem 2.25rem;
+  background: var(--orange);
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 700;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: .01em;
+  transition: background .15s;
+}
+.btn-orange:hover { background: var(--orange-hov); }
+.btn-outline {
+  display: inline-block;
+  padding: .88rem 2rem;
+  background: transparent;
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,.45);
+  transition: border-color .15s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,.8); }
 
-  /* Slide number */
-  .slide-num {
-    position: absolute;
-    bottom: 1.1rem;
-    right: 1.75rem;
-    font-size: .7rem;
-    opacity: .32;
-    font-weight: 500;
-  }
+/* trust badges row inside hero */
+.hero-trust {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.25rem;
+  flex-wrap: wrap;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.72);
+}
+.trust-icon {
+  width: 22px; height: 22px;
+  background: var(--orange);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  color: #fff;
+  flex-shrink: 0;
+}
 
-  /* Profile row */
-  .contact-row { margin-top: 1.75rem; display: flex; gap: 1.75rem; flex-wrap: wrap; }
-  .contact-row span { font-size: .82rem; color: rgba(255,255,255,.48); }
+/* floating stat cards — bottom-right of hero */
+.hero-stats {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+.hero-stat-card {
+  background: rgba(0, 21, 64, 0.78);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 10px;
+  padding: .7rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-width: 210px;
+}
+.hero-stat-icon {
+  width: 34px; height: 34px;
+  border-radius: 7px;
+  background: var(--orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.hero-stat-body strong {
+  display: block;
+  font-size: .88rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.01em;
+}
+.hero-stat-body span {
+  font-size: .72rem;
+  color: rgba(255,255,255,.58);
+}
 
-  /* Responsive */
-  @media (max-width: 680px) {
-    .slide { padding: 2rem 1.5rem; min-height: auto; }
-    h1 { font-size: 1.6rem; }
-    h2 { font-size: 1.2rem; }
-    .grid-3, .grid-2, .two-col, .price-grid { grid-template-columns: 1fr; }
-    .step-row { gap: 1rem; }
-  }
+/* slide number */
+.slide-num {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.75rem;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  opacity: .28;
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+/* ══════════════════════════════
+   CONTENT SLIDES
+══════════════════════════════ */
+.slide {
+  width: 100%;
+  padding: 3.5rem 3.5rem 3rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 360px;
+}
+.s-white    { background: var(--white);      color: var(--text); border-top: 1px solid var(--gray-lt); }
+.s-pale     { background: var(--blue-pale);  color: var(--text); border-top: 1px solid #d4dcee; }
+.s-blue     { background: var(--blue-light); color: var(--text); border-top: 1px solid #c8d4ec; }
+.s-cta      { background: var(--navy);       color: #fff;        border-top: 3px solid var(--orange); }
+
+.eyebrow {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: .65rem;
+}
+
+h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: .6rem;
+  letter-spacing: -.015em;
+}
+h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
+.sub { font-size: 1rem; line-height: 1.7; opacity: .78; max-width: 580px; }
+
+/* ── Two-col layouts ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.two-col-even {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+/* ── Grids ── */
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 1.75rem; }
+
+/* ── Stat cards ── */
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--gray-lt);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+}
+.stat-val { font-size: 2.2rem; font-weight: 900; color: var(--navy); letter-spacing: -.02em; }
+.stat-lbl { font-size: .78rem; color: var(--gray-mid); margin-top: .2rem; line-height: 1.4; }
+
+/* ── Feature cards ── */
+.feat-card {
+  background: var(--white);
+  border: 1px solid var(--gray-lt);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border-top: 3px solid var(--orange);
+}
+.feat-card h3 { color: var(--navy); font-size: .95rem; }
+.feat-card p  { font-size: .84rem; color: var(--gray-text); line-height: 1.6; margin-top: .35rem; }
+
+/* ── Check list ── */
+.check-list { list-style: none; padding: 0; margin-top: .85rem; }
+.check-list li {
+  font-size: .88rem;
+  color: var(--gray-text);
+  padding: 5px 0 5px 1.5rem;
+  position: relative;
+  border-bottom: 1px solid var(--gray-lt);
+  line-height: 1.45;
+}
+.check-list li:last-child { border-bottom: none; }
+.check-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+/* ── Pricing ── */
+.price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 1.75rem; }
+.pc {
+  background: var(--white);
+  border: 1.5px solid var(--gray-lt);
+  border-radius: 14px;
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.pc.featured {
+  border-color: var(--navy);
+  background: var(--blue-pale);
+  box-shadow: 0 6px 30px rgba(0,34,95,0.14);
+}
+.pc-badge {
+  display: inline-block;
+  background: var(--navy);
+  color: #fff;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 20px;
+  margin-bottom: .85rem;
+  align-self: flex-start;
+}
+.pc-name  { font-size: .88rem; font-weight: 700; color: var(--gray-mid); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .3rem; }
+.pc-price { font-size: 2.1rem; font-weight: 900; color: var(--navy); letter-spacing: -.02em; margin: .3rem 0; }
+.pc-price span { font-size: .88rem; font-weight: 400; color: var(--gray-mid); }
+.pc-desc  { font-size: .8rem; color: var(--gray-text); line-height: 1.5; margin-bottom: 1rem; }
+.pc ul { list-style: none; padding: 0; margin-top: auto; }
+.pc ul li {
+  font-size: .82rem;
+  color: var(--text);
+  padding: 6px 0 6px 1.4rem;
+  position: relative;
+  border-top: 1px solid var(--gray-lt);
+}
+.pc ul li:first-child { border-top: none; }
+.pc ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+/* ── Process steps ── */
+.step-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.75rem; }
+.step-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--white);
+  border: 1px solid var(--gray-lt);
+  border-radius: 10px;
+  padding: 1.2rem;
+}
+.step-num {
+  width: 36px; height: 36px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-card h3 { font-size: .88rem; font-weight: 700; color: var(--navy); }
+.step-card p  { font-size: .8rem; color: var(--gray-text); line-height: 1.5; margin-top: .2rem; }
+
+/* ── Skill badges ── */
+.badge-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+.badge {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  background: var(--white);
+  border: 1px solid var(--gray-lt);
+  border-radius: 7px;
+  padding: .5rem 1rem;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+
+/* ── Pills ── */
+.pill {
+  display: inline-block;
+  background: var(--blue-light);
+  color: var(--navy-mid);
+  font-size: .75rem;
+  font-weight: 600;
+  padding: 5px 13px;
+  border-radius: 20px;
+  margin: 3px 2px;
+  border: 1px solid #c5d0e8;
+}
+
+/* ── Profile card ── */
+.profile-card {
+  background: var(--white);
+  border: 1px solid var(--gray-lt);
+  border-left: 4px solid var(--orange);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+}
+.profile-card h3 { color: var(--navy); margin-bottom: .85rem; }
+.profile-row-item {
+  font-size: .85rem;
+  color: var(--text);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--gray-lt);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.profile-row-item:last-child { border-bottom: none; }
+.profile-row-item::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--navy);
+  flex-shrink: 0;
+}
+
+/* ── CTA contact row ── */
+.contact-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.75rem; }
+.contact-row span {
+  font-size: .8rem;
+  color: rgba(255,255,255,.55);
+  background: rgba(255,255,255,.07);
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,.12);
+}
+
+/* ── CTA trust bar ── */
+.cta-trust { display: flex; gap: 1.75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+.cta-trust-item {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .78rem;
+  font-weight: 600;
+  color: rgba(255,255,255,.7);
+}
+
+/* ── Responsive ── */
+@media (max-width: 720px) {
+  .navbar { padding: 0 1.5rem; }
+  .navbar-nav { display: none; }
+  .hero-content { padding: 3rem 1.5rem 2.5rem; }
+  .hero h1 { font-size: 2rem; }
+  .hero-stats { display: none; }
+  .slide { padding: 2rem 1.5rem; min-height: auto; }
+  h2 { font-size: 1.3rem; }
+  .two-col, .two-col-even, .grid-3, .price-grid, .step-grid { grid-template-columns: 1fr; }
+  .btn-outline { margin-left: 0; }
+}
 </style>
 </head>
 <body>
 
 <div class="deck">
 
-  <!-- Slide 1: Dark title -->
-  <div class="slide slide-dark">
-    <div class="tag" style="color:#afa9ec">Consulting services</div>
-    <h1 style="color:#fff">AI-Augmented<br><span style="color:#afa9ec">Web Design</span><br>for Growing Businesses</h1>
-    <p class="sub" style="color:rgba(255,255,255,.6)">Faster builds. Smarter strategy. Real results for small and mid-size businesses.</p>
-    <div class="slide-num" style="color:rgba(255,255,255,.3)">1 / 8</div>
-  </div>
+  <!-- ══ NAV BAR ══ -->
+  <nav class="navbar">
+    <div class="navbar-logo">AI<span>Design</span>Pro</div>
+    <div class="navbar-nav">
+      <a href="#">Services</a>
+      <a href="#">Pricing</a>
+      <a href="#">Process</a>
+      <a href="#">About</a>
+      <a href="#" class="navbar-cta">Book a Free Call</a>
+    </div>
+  </nav>
 
-  <!-- Slide 2: White — The Problem -->
-  <div class="slide slide-white">
-    <div class="tag">The problem</div>
+  <!-- ══ SLIDE 1: FULL-WIDTH HERO BANNER ══ -->
+  <section class="hero">
+    <div class="hero-stripe"></div>
+
+    <!-- full-bleed background photo -->
+    <img
+      class="hero-bg"
+      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&auto=format&fit=crop&q=85"
+      alt="Business consulting team collaborating on digital strategy"
+    />
+
+    <!-- dark left-to-transparent gradient overlay -->
+    <div class="hero-overlay"></div>
+
+    <!-- text content -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">AI-Powered Consulting</div>
+      <h1>The Most Trusted<br><span>AI Web Design</span><br>for Your Business</h1>
+      <p class="hero-sub">Faster builds. Smarter strategy. Real results for small and mid-size businesses — delivered in days, not months.</p>
+      <div class="hero-btns">
+        <a href="#" class="btn-orange">View Plans &amp; Pricing</a>
+        <a href="#" class="btn-outline">Book a Demo</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><div class="trust-icon">✓</div>30-day money-back guarantee</div>
+        <div class="trust-item"><div class="trust-icon">★</div>4.8 / 5 client rating</div>
+        <div class="trust-item"><div class="trust-icon">🤖</div>Certified in Gen AI</div>
+      </div>
+    </div>
+
+    <!-- floating stat cards bottom-right -->
+    <div class="hero-stats">
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon">⚡</div>
+        <div class="hero-stat-body">
+          <strong>Live in 7–14 days</strong>
+          <span>AI-accelerated delivery</span>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon">💼</div>
+        <div class="hero-stat-body">
+          <strong>From $2,500</strong>
+          <span>No hidden fees, no contracts</span>
+        </div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="hero-stat-icon">🎯</div>
+        <div class="hero-stat-body">
+          <strong>Business-first design</strong>
+          <span>Strategy drives every decision</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="slide-num" style="color:rgba(255,255,255,.25)">01 / 08</div>
+  </section>
+
+  <!-- ══ SLIDE 2: White — Problem ══ -->
+  <div class="slide s-white">
+    <div class="eyebrow">The problem</div>
     <div class="two-col">
       <div>
         <h2>SMBs are stuck between slow agencies and cheap templates</h2>
-        <p class="sub" style="margin-top:.75rem">Traditional agencies are expensive and slow. DIY tools produce generic results. And AI is changing everything — but most SMB owners don't know how to leverage it.</p>
+        <p class="sub" style="margin-top:.75rem">Traditional agencies are expensive and slow. DIY tools produce generic results. And AI is changing everything — but most SMB owners don't know how to use it to their advantage.</p>
+        <ul class="check-list" style="margin-top:1.25rem;max-width:360px">
+          <li>Agencies take 6–12 weeks and cost $8K–$20K</li>
+          <li>Templates look generic and hurt brand trust</li>
+          <li>73% of SMBs say their site doesn't reflect their brand</li>
+          <li>Most owners lack time to learn AI tools themselves</li>
+        </ul>
       </div>
-      <div style="display:flex;flex-direction:column;gap:.75rem">
-        <div class="card"><div class="stat">6–12 wks</div><div class="stat-label">Average agency web project timeline</div></div>
-        <div class="card"><div class="stat">$8–20K</div><div class="stat-label">Typical agency website cost</div></div>
-        <div class="card"><div class="stat">73%</div><div class="stat-label">SMBs say their website doesn't reflect their brand</div></div>
+      <div style="display:flex;flex-direction:column;gap:.9rem">
+        <div class="stat-card"><div class="stat-val">6–12 wks</div><div class="stat-lbl">Average agency web project timeline</div></div>
+        <div class="stat-card"><div class="stat-val">$8–20K</div><div class="stat-lbl">Typical agency website cost for SMBs</div></div>
+        <div class="stat-card"><div class="stat-val">73%</div><div class="stat-lbl">SMBs say their website doesn't reflect their brand</div></div>
       </div>
     </div>
-    <div class="slide-num">2 / 8</div>
+    <div class="slide-num">02 / 08</div>
   </div>
 
-  <!-- Slide 3: White — The Solution -->
-  <div class="slide slide-white">
-    <div class="tag">The solution</div>
-    <h2>We combine human design expertise with AI speed</h2>
+  <!-- ══ SLIDE 3: Pale — Solution ══ -->
+  <div class="slide s-pale">
+    <div class="eyebrow">The solution</div>
+    <h2>Human design expertise, supercharged by AI</h2>
+    <p class="sub">We combine years of web design experience with formal generative AI training and real business strategy — delivering better results, faster, at a fraction of agency cost.</p>
     <div class="grid-3">
-      <div class="card-soft">
-        <h3>AI-powered speed</h3>
-        <p>Deliver polished websites in 1–2 weeks, not months. AI handles the heavy lifting so we focus on strategy.</p>
+      <div class="feat-card">
+        <h3>⚡ AI-powered speed</h3>
+        <p>Polished websites delivered in 1–2 weeks. AI handles the heavy lifting so we focus entirely on quality and strategy.</p>
       </div>
-      <div class="card-soft">
-        <h3>Business-first thinking</h3>
-        <p>Every design decision ties to your goals — leads, sales, trust. We speak business, not just pixels.</p>
+      <div class="feat-card">
+        <h3>📈 Business-first design</h3>
+        <p>Every decision ties to your goals — leads, sales, and brand trust. We speak revenue, not pixels.</p>
       </div>
-      <div class="card-soft">
-        <h3>Ongoing AI advantage</h3>
-        <p>We teach you to use AI tools to update and grow your site independently — no agency dependency.</p>
+      <div class="feat-card">
+        <h3>🔓 No agency lock-in</h3>
+        <p>We train you to use AI tools so you can grow your site independently. You own it — forever.</p>
       </div>
     </div>
-    <div class="slide-num">3 / 8</div>
+    <div class="slide-num">03 / 08</div>
   </div>
 
-  <!-- Slide 4: Mid purple — Who We Serve -->
-  <div class="slide slide-mid">
-    <div class="tag">Who we serve</div>
-    <h2>Built for small and mid-size businesses that are ready to grow</h2>
-    <div class="grid-2">
+  <!-- ══ SLIDE 4: White — Who We Serve ══ -->
+  <div class="slide s-white">
+    <div class="eyebrow">Who we serve</div>
+    <h2>Built for small and mid-size businesses ready to grow online</h2>
+    <div class="two-col-even">
       <div>
-        <p style="font-size:.9rem;opacity:.7;line-height:1.7">Whether you're a local service business, an e-commerce brand, a professional services firm, or a startup — if your website isn't doing its job, we can fix that. Fast.</p>
-        <div style="margin-top:1rem">
+        <p style="font-size:.92rem;color:var(--gray-text);line-height:1.75">Whether you're a local service business, an e-commerce brand, a professional services firm, or a startup — if your website isn't working hard enough for you, we fix that. Fast.</p>
+        <div style="margin-top:1.1rem">
           <span class="pill">Local service businesses</span>
           <span class="pill">E-commerce brands</span>
           <span class="pill">Professional services</span>
@@ -227,41 +677,42 @@
           <span class="pill">Restaurants &amp; hospitality</span>
         </div>
       </div>
-      <div class="card">
-        <h3 style="margin-bottom:.75rem">Ideal client profile</h3>
-        <div style="display:flex;flex-direction:column">
-          <div style="font-size:.84rem;opacity:.75;padding:7px 0;border-bottom:0.5px solid #eee">5–50 employees</div>
-          <div style="font-size:.84rem;opacity:.75;padding:7px 0;border-bottom:0.5px solid #eee">Outdated or DIY website</div>
-          <div style="font-size:.84rem;opacity:.75;padding:7px 0;border-bottom:0.5px solid #eee">Budget: $2K–$10K</div>
-          <div style="font-size:.84rem;opacity:.75;padding:7px 0">Wants results, not jargon</div>
-        </div>
+      <div class="profile-card">
+        <h3>Ideal client profile</h3>
+        <div class="profile-row-item">5–50 employees</div>
+        <div class="profile-row-item">Outdated or DIY website</div>
+        <div class="profile-row-item">Budget: $2,500 – $10,000</div>
+        <div class="profile-row-item">Wants results, not jargon</div>
+        <div class="profile-row-item">Ready to move fast</div>
       </div>
     </div>
-    <div class="slide-num">4 / 8</div>
+    <div class="slide-num">04 / 08</div>
   </div>
 
-  <!-- Slide 5: White — Pricing -->
-  <div class="slide slide-white">
-    <div class="tag">Services &amp; pricing</div>
+  <!-- ══ SLIDE 5: White — Pricing ══ -->
+  <div class="slide s-white">
+    <div class="eyebrow">Services &amp; pricing</div>
     <h2>Three clear ways to work together</h2>
+    <p class="sub">No hidden fees. No long contracts. Pick the plan that fits your stage.</p>
     <div class="price-grid">
-      <div class="price-card">
-        <div class="name">Starter Sprint</div>
-        <div class="amount">$2,500 <span>/ project</span></div>
-        <p class="desc">For solopreneurs and micro-businesses needing a professional presence fast.</p>
+      <div class="pc">
+        <div class="pc-name">Starter Sprint</div>
+        <div class="pc-price">$2,500 <span>/ project</span></div>
+        <p class="pc-desc">For solopreneurs and micro-businesses needing a professional online presence fast.</p>
         <ul>
           <li>5-page AI-built website</li>
           <li>Brand + copy alignment</li>
           <li>Mobile-optimised</li>
           <li>Delivered in 7 days</li>
           <li>1 round of revisions</li>
+          <li>Launch support</li>
         </ul>
       </div>
-      <div class="price-card featured">
-        <div class="badge">Most popular</div>
-        <div class="name">Growth Package</div>
-        <div class="amount">$5,500 <span>/ project</span></div>
-        <p class="desc">For established SMBs ready to invest in a site that actually converts.</p>
+      <div class="pc featured">
+        <div class="pc-badge">Most Popular</div>
+        <div class="pc-name">Growth Package</div>
+        <div class="pc-price">$5,500 <span>/ project</span></div>
+        <p class="pc-desc">For established SMBs ready to invest in a site that actually converts visitors into customers.</p>
         <ul>
           <li>10-page website</li>
           <li>SEO foundation setup</li>
@@ -271,103 +722,121 @@
           <li>2 rounds of revisions</li>
         </ul>
       </div>
-      <div class="price-card">
-        <div class="name">AI Strategy Retainer</div>
-        <div class="amount">$1,200 <span>/ month</span></div>
-        <p class="desc">Ongoing AI + web strategy for businesses that want to stay ahead.</p>
+      <div class="pc">
+        <div class="pc-name">AI Strategy Retainer</div>
+        <div class="pc-price">$1,200 <span>/ month</span></div>
+        <p class="pc-desc">Ongoing AI + web strategy for businesses committed to long-term growth online.</p>
         <ul>
           <li>Monthly site updates</li>
           <li>AI content pipeline</li>
           <li>Analytics review</li>
           <li>Team AI training (1 hr/mo)</li>
           <li>Priority support</li>
+          <li>Quarterly strategy review</li>
         </ul>
       </div>
     </div>
-    <div class="slide-num">5 / 8</div>
+    <div class="slide-num">05 / 08</div>
   </div>
 
-  <!-- Slide 6: White — Process -->
-  <div class="slide slide-white">
-    <div class="tag">Our process</div>
-    <h2>From brief to live in 5 clear steps</h2>
-    <div class="step-row">
-      <div class="step">
+  <!-- ══ SLIDE 6: Blue — Process ══ -->
+  <div class="slide s-blue">
+    <div class="eyebrow">Our process</div>
+    <h2>From brief to live — in 5 clear steps</h2>
+    <p class="sub">No long kick-off meetings. No waiting weeks for a first draft. We move fast without cutting corners.</p>
+    <div class="step-grid">
+      <div class="step-card">
         <div class="step-num">1</div>
-        <div class="step-body">
+        <div>
           <h3>Discovery call (60 min)</h3>
-          <p>We learn your business goals, audience, and what's not working with your current web presence.</p>
+          <p>We learn your goals, audience, and what's not working with your current web presence.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step-card">
         <div class="step-num">2</div>
-        <div class="step-body">
+        <div>
           <h3>AI-powered design brief</h3>
-          <p>We use generative AI to produce initial wireframes, copy drafts, and visual concepts in 24 hours.</p>
+          <p>Wireframes, copy drafts, and visual concepts generated and reviewed within 24 hours.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step-card">
         <div class="step-num">3</div>
-        <div class="step-body">
+        <div>
           <h3>Human refinement</h3>
-          <p>Our designer reviews, edits, and elevates the AI output — adding brand voice, polish, and strategy.</p>
+          <p>We elevate the AI output with brand voice, strategic layout, and design polish.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step-card">
         <div class="step-num">4</div>
-        <div class="step-body">
+        <div>
           <h3>Review &amp; revisions</h3>
-          <p>You see the full site and provide feedback. We iterate quickly using our AI workflow.</p>
+          <p>You see the full site and share feedback. We iterate quickly using our AI workflow.</p>
         </div>
       </div>
-      <div class="step">
+      <div class="step-card" style="grid-column:1/-1;max-width:47%">
         <div class="step-num">5</div>
-        <div class="step-body">
+        <div>
           <h3>Launch &amp; handover</h3>
-          <p>We go live and hand you the keys — with a training session so you can manage it confidently.</p>
+          <p>We go live and hand you the keys — with a training session so you're set up for long-term success.</p>
         </div>
       </div>
     </div>
-    <div class="slide-num">6 / 8</div>
+    <div class="slide-num">06 / 08</div>
   </div>
 
-  <!-- Slide 7: Light purple — Why Us -->
-  <div class="slide slide-light">
-    <div class="tag">Why us</div>
-    <h2>The rare combination clients can't find elsewhere</h2>
-    <div class="grid-3">
-      <div class="card">
-        <h3>Design credentials</h3>
-        <p>Years of web design experience across industries. We understand layout, UX, and brand at a deep level.</p>
+  <!-- ══ SLIDE 7: White — Why Us ══ -->
+  <div class="slide s-white">
+    <div class="eyebrow">Why us</div>
+    <h2>The rare combination most agencies can't offer</h2>
+    <p class="sub">Most designers lack business fluency. Most consultants can't design. Most AI users lack real strategy. We bring all three.</p>
+    <div class="grid-3" style="margin-top:1.5rem">
+      <div class="feat-card">
+        <h3>🎨 Design credentials</h3>
+        <p>Years of web design across industries. Deep expertise in UX, layout, and brand identity systems.</p>
       </div>
-      <div class="card">
-        <h3>Business fluency</h3>
-        <p>We speak ROI, not pixels. Every design decision connects back to your revenue and growth goals.</p>
+      <div class="feat-card">
+        <h3>📊 Business fluency</h3>
+        <p>We speak ROI, conversion rates, and growth — not just aesthetics. Strategy drives every decision.</p>
       </div>
-      <div class="card">
-        <h3>Certified in Gen AI</h3>
-        <p>Formally trained in generative AI for work and research — not just dabbling. We stay at the frontier.</p>
+      <div class="feat-card">
+        <h3>🤖 Certified in Gen AI</h3>
+        <p>Formally trained in generative AI for work and research. We stay at the frontier so you don't have to.</p>
       </div>
     </div>
-    <p style="margin-top:1.25rem;font-size:.85rem;opacity:.6;max-width:540px">Most agencies offer one or two of these. We bring all three — packaged into a service that's faster, sharper, and better value than traditional alternatives.</p>
-    <div class="slide-num">7 / 8</div>
+    <div class="badge-row">
+      <div class="badge"><div class="badge-dot"></div>Web Design</div>
+      <div class="badge"><div class="badge-dot"></div>Business Strategy</div>
+      <div class="badge"><div class="badge-dot"></div>Generative AI</div>
+      <div class="badge"><div class="badge-dot"></div>AI Workflow Automation</div>
+      <div class="badge"><div class="badge-dot"></div>Prompt Engineering</div>
+      <div class="badge"><div class="badge-dot"></div>SEO Foundations</div>
+      <div class="badge"><div class="badge-dot"></div>Content Systems</div>
+    </div>
+    <div class="slide-num">07 / 08</div>
   </div>
 
-  <!-- Slide 8: Dark CTA -->
-  <div class="slide slide-dark">
-    <div class="tag" style="color:#afa9ec">Next steps</div>
-    <h2 style="color:#fff">Ready to build a website<br>that works as hard as you do?</h2>
-    <p class="sub" style="color:rgba(255,255,255,.6);margin-top:.75rem">Book a free 30-minute discovery call. No commitment, no jargon — just an honest conversation about what your business needs online.</p>
-    <div class="cta-big">Book a free discovery call →</div>
+  <!-- ══ SLIDE 8: Dark CTA ══ -->
+  <div class="slide s-cta">
+    <div class="eyebrow" style="color:var(--orange)">Get started today</div>
+    <h2 style="color:#fff;font-size:2.1rem">Ready to build a website<br>that works as hard as you do?</h2>
+    <p class="sub" style="color:rgba(255,255,255,.7);margin-top:.75rem">Book a free 30-minute discovery call. No commitment, no jargon — just an honest conversation about what your business needs to grow online.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-orange">Book a Free Discovery Call →</a>
+      <a href="#" class="btn-outline">View Pricing</a>
+    </div>
+    <div class="cta-trust">
+      <div class="cta-trust-item"><div class="trust-icon">✓</div>30-day money-back guarantee</div>
+      <div class="cta-trust-item"><div class="trust-icon">★</div>4.8 / 5 client satisfaction</div>
+      <div class="cta-trust-item"><div class="trust-icon">⚡</div>Sites delivered in 7–14 days</div>
+    </div>
     <div class="contact-row">
       <span>yourname@email.com</span>
       <span>yourconsulting.com</span>
       <span>linkedin.com/in/yourname</span>
     </div>
-    <div class="slide-num" style="color:rgba(255,255,255,.3)">8 / 8</div>
+    <div class="slide-num" style="color:rgba(255,255,255,.25)">08 / 08</div>
   </div>
 
 </div>
-
 </body>
 </html>
