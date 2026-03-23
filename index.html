@@ -24,6 +24,10 @@
   --green:      #22c55e;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background: #dce3f0;
@@ -51,14 +55,16 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  position: relative;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 .navbar-logo {
   font-size: 1.25rem;
   font-weight: 800;
   color: #fff;
   letter-spacing: -.02em;
+  text-decoration: none;
 }
 .navbar-logo span { color: var(--orange); }
 .navbar-nav {
@@ -71,6 +77,7 @@ body {
   font-weight: 500;
   color: rgba(255,255,255,.65);
   text-decoration: none;
+  transition: color 0.2s;
 }
 .navbar-nav a:hover { color: #fff; }
 .navbar-cta {
@@ -83,7 +90,9 @@ body {
   text-decoration: none;
   letter-spacing: .01em;
   margin-left: 1rem;
+  transition: background 0.2s;
 }
+.navbar-cta:hover { background: var(--orange-hov); }
 
 /* ══════════════════════════════
    HERO — full-width image banner
@@ -97,7 +106,6 @@ body {
   overflow: hidden;
 }
 
-/* the photo */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -108,7 +116,6 @@ body {
   display: block;
 }
 
-/* left-to-right dark gradient so text is always legible */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -121,7 +128,6 @@ body {
   );
 }
 
-/* orange top accent stripe */
 .hero-stripe {
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -130,7 +136,6 @@ body {
   z-index: 3;
 }
 
-/* content sits above overlays */
 .hero-content {
   position: relative;
   z-index: 4;
@@ -209,7 +214,6 @@ body {
 }
 .btn-outline:hover { border-color: rgba(255,255,255,.8); }
 
-/* trust badges row inside hero */
 .hero-trust {
   display: flex;
   gap: 1.5rem;
@@ -234,7 +238,6 @@ body {
   flex-shrink: 0;
 }
 
-/* floating stat cards — bottom-right of hero */
 .hero-stats {
   position: absolute;
   bottom: 2rem;
@@ -275,7 +278,6 @@ body {
   color: rgba(255,255,255,.58);
 }
 
-/* slide number */
 .slide-num {
   position: absolute;
   bottom: 1rem;
@@ -301,9 +303,9 @@ body {
   min-height: 360px;
 }
 .s-white    { background: var(--white);      color: var(--text); border-top: 1px solid var(--gray-lt); }
-.s-pale     { background: var(--blue-pale);  color: var(--text); border-top: 1px solid #d4dcee; }
-.s-blue     { background: var(--blue-light); color: var(--text); border-top: 1px solid #c8d4ec; }
-.s-cta      { background: var(--navy);       color: #fff;        border-top: 3px solid var(--orange); }
+.s-pale      { background: var(--blue-pale);  color: var(--text); border-top: 1px solid #d4dcee; }
+.s-blue      { background: var(--blue-light); color: var(--text); border-top: 1px solid #c8d4ec; }
+.s-cta       { background: var(--navy);       color: #fff;        border-top: 3px solid var(--orange); }
 
 .eyebrow {
   font-size: 10.5px;
@@ -548,38 +550,35 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
 
   <!-- ══ NAV BAR ══ -->
   <nav class="navbar">
-    <div class="navbar-logo">AI<span>Design</span>Pro</div>
+    <a href="#hero" class="navbar-logo">AI<span>Design</span>Pro</a>
     <div class="navbar-nav">
-      <a href="#">Services</a>
-      <a href="#">Pricing</a>
-      <a href="#">Process</a>
-      <a href="#">About</a>
-      <a href="#" class="navbar-cta">Book a Free Call</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="#contact" class="navbar-cta">Book a Free Call</a>
     </div>
   </nav>
 
   <!-- ══ SLIDE 1: FULL-WIDTH HERO BANNER ══ -->
-  <section class="hero">
+  <section id="hero" class="hero">
     <div class="hero-stripe"></div>
 
-    <!-- full-bleed background photo -->
     <img
       class="hero-bg"
       src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&auto=format&fit=crop&q=85"
       alt="Business consulting team collaborating on digital strategy"
     />
 
-    <!-- dark left-to-transparent gradient overlay -->
     <div class="hero-overlay"></div>
 
-    <!-- text content -->
     <div class="hero-content">
       <div class="hero-eyebrow">AI-Powered Consulting</div>
       <h1>The Most Trusted<br><span>AI Web Design</span><br>for Your Business</h1>
       <p class="hero-sub">Faster builds. Smarter strategy. Real results for small and mid-size businesses — delivered in days, not months.</p>
       <div class="hero-btns">
-        <a href="#" class="btn-orange">View Plans &amp; Pricing</a>
-        <a href="#" class="btn-outline">Book a Demo</a>
+        <a href="#pricing" class="btn-orange">View Plans &amp; Pricing</a>
+        <a href="#contact" class="btn-outline">Book a Demo</a>
       </div>
       <div class="hero-trust">
         <div class="trust-item"><div class="trust-icon">✓</div>30-day money-back guarantee</div>
@@ -588,7 +587,6 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       </div>
     </div>
 
-    <!-- floating stat cards bottom-right -->
     <div class="hero-stats">
       <div class="hero-stat-card">
         <div class="hero-stat-icon">⚡</div>
@@ -616,8 +614,8 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
     <div class="slide-num" style="color:rgba(255,255,255,.25)">01 / 08</div>
   </section>
 
-  <!-- ══ SLIDE 2: White — Problem ══ -->
-  <div class="slide s-white">
+  <!-- ══ SLIDE 2: Problem ══ -->
+  <section id="problem" class="slide s-white">
     <div class="eyebrow">The problem</div>
     <div class="two-col">
       <div>
@@ -637,10 +635,10 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       </div>
     </div>
     <div class="slide-num">02 / 08</div>
-  </div>
+  </section>
 
-  <!-- ══ SLIDE 3: Pale — Solution ══ -->
-  <div class="slide s-pale">
+  <!-- ══ SLIDE 3: Solution ══ -->
+  <section id="services" class="slide s-pale">
     <div class="eyebrow">The solution</div>
     <h2>Human design expertise, supercharged by AI</h2>
     <p class="sub">We combine years of web design experience with formal generative AI training and real business strategy — delivering better results, faster, at a fraction of agency cost.</p>
@@ -659,10 +657,10 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       </div>
     </div>
     <div class="slide-num">03 / 08</div>
-  </div>
+  </section>
 
-  <!-- ══ SLIDE 4: White — Who We Serve ══ -->
-  <div class="slide s-white">
+  <!-- ══ SLIDE 4: Who We Serve ══ -->
+  <section id="about" class="slide s-white">
     <div class="eyebrow">Who we serve</div>
     <h2>Built for small and mid-size businesses ready to grow online</h2>
     <div class="two-col-even">
@@ -687,10 +685,10 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       </div>
     </div>
     <div class="slide-num">04 / 08</div>
-  </div>
+  </section>
 
-  <!-- ══ SLIDE 5: White — Pricing ══ -->
-  <div class="slide s-white">
+  <!-- ══ SLIDE 5: Pricing ══ -->
+  <section id="pricing" class="slide s-white">
     <div class="eyebrow">Services &amp; pricing</div>
     <h2>Three clear ways to work together</h2>
     <p class="sub">No hidden fees. No long contracts. Pick the plan that fits your stage.</p>
@@ -737,10 +735,10 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       </div>
     </div>
     <div class="slide-num">05 / 08</div>
-  </div>
+  </section>
 
-  <!-- ══ SLIDE 6: Blue — Process ══ -->
-  <div class="slide s-blue">
+  <!-- ══ SLIDE 6: Process ══ -->
+  <section id="process" class="slide s-blue">
     <div class="eyebrow">Our process</div>
     <h2>From brief to live — in 5 clear steps</h2>
     <p class="sub">No long kick-off meetings. No waiting weeks for a first draft. We move fast without cutting corners.</p>
@@ -782,10 +780,10 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       </div>
     </div>
     <div class="slide-num">06 / 08</div>
-  </div>
+  </section>
 
-  <!-- ══ SLIDE 7: White — Why Us ══ -->
-  <div class="slide s-white">
+  <!-- ══ SLIDE 7: Why Us ══ -->
+  <section id="why-us" class="slide s-white">
     <div class="eyebrow">Why us</div>
     <h2>The rare combination most agencies can't offer</h2>
     <p class="sub">Most designers lack business fluency. Most consultants can't design. Most AI users lack real strategy. We bring all three.</p>
@@ -813,16 +811,16 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       <div class="badge"><div class="badge-dot"></div>Content Systems</div>
     </div>
     <div class="slide-num">07 / 08</div>
-  </div>
+  </section>
 
   <!-- ══ SLIDE 8: Dark CTA ══ -->
-  <div class="slide s-cta">
+  <section id="contact" class="slide s-cta">
     <div class="eyebrow" style="color:var(--orange)">Get started today</div>
     <h2 style="color:#fff;font-size:2.1rem">Ready to build a website<br>that works as hard as you do?</h2>
     <p class="sub" style="color:rgba(255,255,255,.7);margin-top:.75rem">Book a free 30-minute discovery call. No commitment, no jargon — just an honest conversation about what your business needs to grow online.</p>
     <div class="hero-btns">
-      <a href="#" class="btn-orange">Book a Free Discovery Call →</a>
-      <a href="#" class="btn-outline">View Pricing</a>
+      <a href="mailto:yourname@email.com" class="btn-orange">Book a Free Discovery Call →</a>
+      <a href="#pricing" class="btn-outline">View Pricing</a>
     </div>
     <div class="cta-trust">
       <div class="cta-trust-item"><div class="trust-icon">✓</div>30-day money-back guarantee</div>
@@ -835,7 +833,7 @@ h3 { font-size: 1rem; font-weight: 700; margin-bottom: .3rem; }
       <span>linkedin.com/in/yourname</span>
     </div>
     <div class="slide-num" style="color:rgba(255,255,255,.25)">08 / 08</div>
-  </div>
+  </section>
 
 </div>
 </body>
